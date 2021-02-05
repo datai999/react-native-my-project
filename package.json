@@ -23,7 +23,9 @@
   },
   "devDependencies": {
     "@babel/core": "~7.9.0",
+    "babel-cli": "^6.26.0",
     "babel-jest": "~25.2.6",
+    "babel-preset-flow": "^6.23.0",
     "jest": "~25.2.6",
     "react-test-renderer": "~16.13.1"
   },
