@@ -1,0 +1,12 @@
+{
+  "name": "taiProject",
+  "displayName": "taiProject",
+  "expo": {
+    "name": "taiProject",
+    "slug": "taiProject",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
