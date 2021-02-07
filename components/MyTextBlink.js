@@ -35,7 +35,7 @@ class Blink extends Component<IBlinkProps, IBlinkState> {
   }
 }
 
-export default class TextBlink extends Component {
+export default class MyTextBlink extends Component {
   render() {
     return (
       <View>
