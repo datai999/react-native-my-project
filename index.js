@@ -12,10 +12,10 @@ import TextBlink from "./components/TextBlink";
 import MyStyleSheet from "./components/StyleSheet";
 //lesson 10-15
 import MyTextInput from "./components/MyTextInput";
-import VerticalScrollView from "./components/VerticalScrollView";
+import MyScrollView from "./components/MyScrollView";
 //...
 
 // registerRootComponent calls AppRegistry.registerComponent('main', () => App);
 // It also ensures that whether you load the app in the Expo client or in a native build,
 // the environment is set up appropriately
-registerRootComponent(VerticalScrollView);
+registerRootComponent(MyScrollView);

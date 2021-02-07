@@ -13,11 +13,18 @@ import {
   TextInput,
 } from "react-native";
 
-export default class VerticalScrollView extends Component {
+export default class MyScrollView extends Component {
   render() {
     let screenWidth = Dimensions.get("window").width;
     return (
-      <ScrollView style={{ marginTop: 50 }} keyboardDismissMode="on-drag">
+      <ScrollView
+        keyboardDismissMode="on-drag"
+        horizontal={false}
+        pagingEnabled={false}
+        pageVerticalScrollIndicator={true}
+        pageHorizontalScrollIndicator={true}
+        style={{ marginTop: 50 }}
+      >
         <Image
           source={require("../images/d3.jpg")}
           style={{ width: screenWidth, height: (screenWidth / 800) * 450 }}
