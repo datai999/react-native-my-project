@@ -9,9 +9,10 @@ import MyImage from "./components/MyImage";
 import MultiGreeting from "./components/MultiGreeting";
 import TextBlink from "./components/TextBlink";
 //lesson 6-10
+import MyStyleSheet from "./components/StyleSheet";
 //...
 
 // registerRootComponent calls AppRegistry.registerComponent('main', () => App);
 // It also ensures that whether you load the app in the Expo client or in a native build,
 // the environment is set up appropriately
-registerRootComponent(TextBlink);
+registerRootComponent(MyStyleSheet);
