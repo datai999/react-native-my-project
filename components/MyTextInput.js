@@ -12,6 +12,7 @@ export default class MyTextInput extends Component {
     this.state = {
       typedText: "Init text email",
       typedPass: "Init text pass",
+      typedMulti: "Init text multi",
     };
   }
   render() {
@@ -21,6 +22,7 @@ export default class MyTextInput extends Component {
           style={{ borderColor: "blue", borderWidth: 1, padding: 10 }}
           keyboardType="email-address"
           placeholder="Enter your email"
+          autofocus={true}
           onChangeText={(text) => {
             this.setState({ typedText: text });
           }}
@@ -34,8 +36,18 @@ export default class MyTextInput extends Component {
             this.setState({ typedPass: text });
           }}
         ></TextInput>
+        <TextInput
+          style={{ borderColor: "blue", borderWidth: 1, padding: 10 }}
+          keyboardType="default"
+          placeholder="Enter multi line"
+          multiline={true}
+          onChangeText={(text) => {
+            this.setState({ typedMulti: text });
+          }}
+        ></TextInput>
         <Text>{this.state.typedText}</Text>
         <Text>{this.state.typedPass}</Text>
+        <Text>{this.state.typedMulti}</Text>
       </View>
     );
   }
