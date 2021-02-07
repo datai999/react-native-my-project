@@ -13,7 +13,7 @@ class Greeting extends Component<GreetingProps> {
   }
 }
 
-export default class MultiGreeting extends Component {
+export default class MyMultiGreeting extends Component {
   render() {
     return (
       <View style={{ alignItems: "center" }}>

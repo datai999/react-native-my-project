@@ -6,7 +6,7 @@ Email:datai28599@gmail.com
 import React, { Component } from "react";
 import { Text } from "react-native";
 
-export default class HelloWord extends Component {
+export default class MyHelloWord extends Component {
   render() {
     return <Text>HelloWord. My name is Tai.</Text>;
   }
