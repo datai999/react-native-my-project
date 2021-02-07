@@ -4,7 +4,7 @@ https://www.facebook.com/datai99/
 Email:datai28599@gmail.com
 */
 import React, { Component } from "react";
-import { TextInput, View, Text } from "react-native";
+import { TextInput, View, Text, Alert, Button } from "react-native";
 
 export default class MyTextInput extends Component {
   constructor(props) {
@@ -15,6 +15,9 @@ export default class MyTextInput extends Component {
       typedMulti: "Init text multi",
     };
   }
+  _onPressBtn = () => {
+    Alert.alert(this.state.typedText);
+  };
   render() {
     return (
       <View style={{ flex: 1, justifyContent: "center", margin: 20 }}>
@@ -48,6 +51,7 @@ export default class MyTextInput extends Component {
         <Text>{this.state.typedText}</Text>
         <Text>{this.state.typedPass}</Text>
         <Text>{this.state.typedMulti}</Text>
+        <Button title="Submit" color="blue" onPress={this._onPressBtn}></Button>
       </View>
     );
   }
