@@ -13,11 +13,13 @@ import MyStyleSheet from './components/MyStyleSheet'
 //lesson 10-16
 import MyTextInput from './components/MyTextInput'
 import MyScrollView from './components/MyScrollView'
-//lesson 17-20
+//lesson 17-25
 import MyFlatList from './components/MyFlatList'
+//lesson 26-30
+import MyPokeFlatList from './components/MyPokeFlatList'
 //...
 
 // registerRootComponent calls AppRegistry.registerComponent('main', () => App);
 // It also ensures that whether you load the app in the Expo client or in a native build,
 // the environment is set up appropriately
-registerRootComponent(MyFlatList)
+registerRootComponent(MyPokeFlatList)
