@@ -7,7 +7,7 @@ import React, { Component } from 'react'
 import { Text, View, FlatList, Alert } from 'react-native'
 import flatListData from '../data/MyFlatListData'
 //this is no longer supported, please consider using https://github.com/jemise111/react-native-swipe-list-view instead.
-import Swipeout from 'react-native-swipeout'
+// import Swipeout from 'react-native-swipeout'
 
 export default class MyFlatList extends Component {
   constructor(props) {
@@ -47,52 +47,52 @@ class FlatListItem extends Component {
     }
   }
   render() {
-    const swipeSetting = {
-      autoClose: true,
-      rowId: this.props.index,
-      sectionId: 1,
-      onOpen: (secId, rowId, direction) =>
-        this.setState({ activeRowKey: this.props.index.toString }),
-      onClose: (secId, rowId, direction) => {
-        if (this.state.activeRowKey != null)
-          this.setState({ activeRowKey: null })
-      },
-      right: [
-        {
-          text: 'Delete',
-          type: 'delete',
-          onPress: () => {
-            Alert.alert(
-              'Alert',
-              'Are you sure you want to delete ?',
-              [
-                {
-                  text: 'No',
-                  style: 'cancel',
-                  onPress: () => console.log('Cancel'),
-                },
-                {
-                  text: 'Yes',
-                  onPress: () => {
-                    flatListData.splice(this.props.index, 1)
-                    this.props.parentFlatList.refreshFlatList(
-                      this.state.activeRowKey,
-                    )
-                  },
-                },
-              ],
-              { cancelable: true },
-            )
-          },
-        },
-      ],
-    }
+    // const swipeSetting = {
+    //   autoClose: true,
+    //   rowId: this.props.index,
+    //   sectionId: 1,
+    //   onOpen: (secId, rowId, direction) =>
+    //     this.setState({ activeRowKey: this.props.index.toString }),
+    //   onClose: (secId, rowId, direction) => {
+    //     if (this.state.activeRowKey != null)
+    //       this.setState({ activeRowKey: null })
+    //   },
+    //   right: [
+    //     {
+    //       text: 'Delete',
+    //       type: 'delete',
+    //       onPress: () => {
+    //         Alert.alert(
+    //           'Alert',
+    //           'Are you sure you want to delete ?',
+    //           [
+    //             {
+    //               text: 'No',
+    //               style: 'cancel',
+    //               onPress: () => console.log('Cancel'),
+    //             },
+    //             {
+    //               text: 'Yes',
+    //               onPress: () => {
+    //                 flatListData.splice(this.props.index, 1)
+    //                 this.props.parentFlatList.refreshFlatList(
+    //                   this.state.activeRowKey,
+    //                 )
+    //               },
+    //             },
+    //           ],
+    //           { cancelable: true },
+    //         )
+    //       },
+    //     },
+    //   ],
+    // }
     return (
-      <Swipeout {...swipeSetting}>
-        <View style={{ flex: 1 }}>
-          <Text>{this.props.index + '  ' + this.props.item.name}</Text>
-        </View>
-      </Swipeout>
+      // <Swipeout {...swipeSetting}>
+      <View style={{ flex: 1 }}>
+        <Text>{this.props.index + '  ' + this.props.item.name}</Text>
+      </View>
+      // </Swipeout>
     )
   }
 }
