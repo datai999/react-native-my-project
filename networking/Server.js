@@ -17,4 +17,22 @@ async function getAllPoke() {
     console.log('Error: ${error}')
   }
 }
+
+async function postTemplates(params) {
+  try {
+    let response = await fetch(apiPoke, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(params),
+    })
+    let responseJson = await response.json()
+    return responseJson.results
+  } catch (error) {
+    console.log('Error: ${error} ')
+  }
+}
 export { getAllPoke }
+export { postTemplates }
