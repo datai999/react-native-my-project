@@ -16,6 +16,10 @@ export default class MyLogin extends Component {
     }
   }
 
+  login = () => {
+    console.log('login' + this.state.username + this.state.password)
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -27,18 +31,19 @@ export default class MyLogin extends Component {
         <Text style={styles.title}>Well come to my application!!!</Text>
         <TextInputComponent
           style={styles.input}
-          context={new Context(this, 'username')}
+          context={new SingleStateContext(this, 'username')}
           label="Email"
         />
         <TextInputComponent
           style={styles.input}
-          context={new Context(this, 'password')}
+          secureTextEntry={true}
+          context={new SingleStateContext(this, 'password')}
           label="Password"
         />
         <Button
           style={(styles.input, styles.button)}
           mode="contained"
-          onPress={() => console.log('Pressed')}
+          onPress={this.login}
         >
           Login
         </Button>
@@ -70,7 +75,7 @@ const styles = StyleSheet.create({
   },
 })
 
-class Context {
+class SingleStateContext {
   constructor(context, stateName) {
     this.context = context
     this.stateName = stateName
@@ -92,7 +97,7 @@ function TextInputComponent({ context, ...props }) {
   }
 
   let contextProps
-  if (context != null && context instanceof Context) {
+  if (context != null && context instanceof SingleStateContext) {
     contextProps = {
       value: context.getStateValue(),
       onChangeText: context.setStateValue,
