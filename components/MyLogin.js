@@ -4,8 +4,8 @@ https://www.facebook.com/datai99/
 Email:datai28599@gmail.com
 */
 import React, { Component } from 'react'
-import { Text, View } from 'react-native'
-import { TextInput } from 'react-native-paper'
+import { Text, View, StyleSheet } from 'react-native'
+import { TextInput, Button } from 'react-native-paper'
 
 export default class MyLogin extends Component {
   constructor(props) {
@@ -18,19 +18,46 @@ export default class MyLogin extends Component {
 
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <TextInputComponent
+          style={styles.input}
           context={new Context(this, 'username')}
           label="Email"
         />
         <TextInputComponent
+          style={styles.input}
           context={new Context(this, 'password')}
           label="Password"
         />
+        <Button
+          style={(styles.input, styles.button)}
+          mode="contained"
+          onPress={() => console.log('Pressed')}
+        >
+          Login
+        </Button>
       </View>
     )
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  input: {
+    borderRadius: 10,
+    marginVertical: 5,
+    width: '80%',
+  },
+  button: {
+    marginTop: 5,
+    width: '40%',
+  },
+})
 
 class Context {
   constructor(context, stateName) {
