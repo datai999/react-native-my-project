@@ -5,7 +5,7 @@ Email:datai28599@gmail.com
 */
 import React, { Component } from 'react'
 import { Text, View, StyleSheet } from 'react-native'
-import { TextInput, Button } from 'react-native-paper'
+import { TextInput, Button, Avatar } from 'react-native-paper'
 
 export default class MyLogin extends Component {
   constructor(props) {
@@ -19,6 +19,12 @@ export default class MyLogin extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <View style={styles.logo}>
+          <Avatar.Icon icon="alpha-t-circle-outline" />
+          <Avatar.Icon icon="alpha-a-circle-outline" />
+          <Avatar.Icon icon="alpha-i-circle-outline" />
+        </View>
+        <Text style={styles.title}>Well come to my application!!!</Text>
         <TextInputComponent
           style={styles.input}
           context={new Context(this, 'username')}
@@ -48,6 +54,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  logo: {
+    flexDirection: 'row',
+    marginBottom: '5%',
+  },
+  title: { marginBottom: '15%', fontSize: 20, fontWeight: 'bold' },
   input: {
     borderRadius: 10,
     marginVertical: 5,
