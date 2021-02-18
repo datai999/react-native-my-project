@@ -1,7 +1,5 @@
 import { registerRootComponent } from 'expo'
 
-import App from './App'
-
 // lesson from https://www.youtube.com/watch?v=kNHuLOXR5T0&list=PLWBrqglnjNl31S91FFE63DtuRc9v9LSGl&index=1&ab_channel=NguyenDucHoang
 //lesson 1-5
 import HelloWord from './components/MyHelloWord'
@@ -18,14 +16,32 @@ import MyFlatList from './components/MyFlatList'
 //lesson 26-28
 import MyPokeFlatList from './components/MyPokeFlatList'
 //lesson 29-30
-import MyLogin from './components/MyLogin'
-import MyRegister from './components/MyRegister'
+import LoginScreen from './screen/login/LoginScreen'
+import RegisterScreen from './screen/register/RegisterScreen'
 //lesson 31-34 login facebook, gg, realtime db
 //lesson 35-39 redux
 //lesson 40-45 redux saga
-//...
+//lesson 46-49 navigation
+import React from 'react'
+import { NavigationContainer } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/stack'
+import ScreenName from './constants/ScreenName'
 
-// registerRootComponent calls AppRegistry.registerComponent('main', () => App);
-// It also ensures that whether you load the app in the Expo client or in a native build,
-// the environment is set up appropriately
-registerRootComponent(MyLogin)
+const Stack = createStackNavigator()
+function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name={ScreenName.login}
+          component={LoginScreen}
+          options={{
+            headerShown: true,
+          }}
+        />
+        <Stack.Screen name={ScreenName.register} component={RegisterScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  )
+}
+registerRootComponent(App)
