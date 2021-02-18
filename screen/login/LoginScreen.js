@@ -9,35 +9,32 @@ import {
   Button as PaperButton,
   Avatar as PaperAvatar,
 } from 'react-native-paper'
-import PaperTextInput from './PaperTextInput'
-import SingleStateContext from '../dto/SingleStateContext'
-import { FirebaseApp } from '../server/FirebaseServer'
+import PaperTextInput from '../../components/PaperTextInput'
+import SingleStateContext from '../../dto/SingleStateContext'
+import { FirebaseApp } from '../../server/FirebaseServer'
 
-export default class MyLogin extends Component {
+export default class LoginScreen extends Component {
   constructor(props) {
     super(props)
     this.state = {
       email: '',
       password: '',
-      passwordCopy: '',
     }
   }
 
-  register = () => {
-    if (this.state.password !== this.state.passwordCopy)
-      return alert('Password is not equal')
+  login = () => {
     FirebaseApp.auth()
-      .createUserWithEmailAndPassword(this.state.email, this.state.password)
+      .signInWithEmailAndPassword(this.state.email, this.state.password)
       .then((userCredential) => {
         // Signed in
         var user = userCredential.user
-        alert('Register success')
+        alert('Login success')
         console.log(user)
       })
       .catch((error) => {
         var errorCode = error.code
         var errorMessage = error.message
-        alert('Error register:' + errorCode + errorMessage)
+        alert('Login failed:' + errorCode + errorMessage)
       })
   }
 
@@ -61,18 +58,12 @@ export default class MyLogin extends Component {
           context={new SingleStateContext(this, 'password')}
           label="Password"
         />
-        <PaperTextInput
-          style={styles.input}
-          secureTextEntry={true}
-          context={new SingleStateContext(this, 'passwordCopy')}
-          label="Password Again"
-        />
         <PaperButton
           style={(styles.input, styles.button)}
           mode="contained"
-          onPress={this.register}
+          onPress={this.login}
         >
-          Register
+          Login
         </PaperButton>
       </View>
     )

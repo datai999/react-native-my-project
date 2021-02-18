@@ -9,32 +9,35 @@ import {
   Button as PaperButton,
   Avatar as PaperAvatar,
 } from 'react-native-paper'
-import PaperTextInput from './PaperTextInput'
-import SingleStateContext from '../dto/SingleStateContext'
-import { FirebaseApp } from '../server/FirebaseServer'
+import PaperTextInput from '../../components/PaperTextInput'
+import SingleStateContext from '../../dto/SingleStateContext'
+import { FirebaseApp } from '../../server/FirebaseServer'
 
-export default class MyLogin extends Component {
+export default class RegisterScreen extends Component {
   constructor(props) {
     super(props)
     this.state = {
       email: '',
       password: '',
+      passwordCopy: '',
     }
   }
 
-  login = () => {
+  register = () => {
+    if (this.state.password !== this.state.passwordCopy)
+      return alert('Password is not equal')
     FirebaseApp.auth()
-      .signInWithEmailAndPassword(this.state.email, this.state.password)
+      .createUserWithEmailAndPassword(this.state.email, this.state.password)
       .then((userCredential) => {
         // Signed in
         var user = userCredential.user
-        alert('Login success')
+        alert('Register success')
         console.log(user)
       })
       .catch((error) => {
         var errorCode = error.code
         var errorMessage = error.message
-        alert('Login failed:' + errorCode + errorMessage)
+        alert('Error register:' + errorCode + errorMessage)
       })
   }
 
@@ -58,12 +61,18 @@ export default class MyLogin extends Component {
           context={new SingleStateContext(this, 'password')}
           label="Password"
         />
+        <PaperTextInput
+          style={styles.input}
+          secureTextEntry={true}
+          context={new SingleStateContext(this, 'passwordCopy')}
+          label="Password Again"
+        />
         <PaperButton
           style={(styles.input, styles.button)}
           mode="contained"
-          onPress={this.login}
+          onPress={this.register}
         >
-          Login
+          Register
         </PaperButton>
       </View>
     )
