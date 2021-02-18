@@ -18,10 +18,13 @@ export default class MyLogin extends Component {
     this.state = {
       username: '',
       password: '',
+      passwordCopy: '',
     }
   }
 
   login = () => {
+    if (this.state.password !== this.state.passwordCopy)
+      return alert('Password is not equal')
     console.log('login' + this.state.username + this.state.password)
   }
 
@@ -44,6 +47,12 @@ export default class MyLogin extends Component {
           secureTextEntry={true}
           context={new SingleStateContext(this, 'password')}
           label="Password"
+        />
+        <PaperTextInput
+          style={styles.input}
+          secureTextEntry={true}
+          context={new SingleStateContext(this, 'passwordCopy')}
+          label="Password Again"
         />
         <PaperButton
           style={(styles.input, styles.button)}
