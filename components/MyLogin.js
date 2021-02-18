@@ -11,18 +11,31 @@ import {
 } from 'react-native-paper'
 import PaperTextInput from './PaperTextInput'
 import SingleStateContext from '../dto/SingleStateContext'
+import { FirebaseApp } from '../server/FirebaseServer'
 
 export default class MyLogin extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      username: '',
+      email: '',
       password: '',
     }
   }
 
   login = () => {
-    console.log('login' + this.state.username + this.state.password)
+    FirebaseApp.auth()
+      .signInWithEmailAndPassword(this.state.email, this.state.password)
+      .then((userCredential) => {
+        // Signed in
+        var user = userCredential.user
+        alert('Login success')
+        console.log(user)
+      })
+      .catch((error) => {
+        var errorCode = error.code
+        var errorMessage = error.message
+        alert('Login failed:' + errorCode + errorMessage)
+      })
   }
 
   render() {
@@ -36,7 +49,7 @@ export default class MyLogin extends Component {
         <Text style={styles.title}>Well come to my application!!!</Text>
         <PaperTextInput
           style={styles.input}
-          context={new SingleStateContext(this, 'username')}
+          context={new SingleStateContext(this, 'email')}
           label="Email"
         />
         <PaperTextInput
