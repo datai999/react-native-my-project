@@ -11,21 +11,34 @@ import {
 } from 'react-native-paper'
 import PaperTextInput from './PaperTextInput'
 import SingleStateContext from '../dto/SingleStateContext'
+import { FirebaseApp } from '../server/FirebaseServer'
 
 export default class MyLogin extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      username: '',
+      email: '',
       password: '',
       passwordCopy: '',
     }
   }
 
-  login = () => {
+  register = () => {
     if (this.state.password !== this.state.passwordCopy)
       return alert('Password is not equal')
-    console.log('login' + this.state.username + this.state.password)
+    FirebaseApp.auth()
+      .createUserWithEmailAndPassword(this.state.email, this.state.password)
+      .then((userCredential) => {
+        // Signed in
+        var user = userCredential.user
+        alert('Register success')
+        console.log(user)
+      })
+      .catch((error) => {
+        var errorCode = error.code
+        var errorMessage = error.message
+        alert('Error register:' + errorCode + errorMessage)
+      })
   }
 
   render() {
@@ -39,7 +52,7 @@ export default class MyLogin extends Component {
         <Text style={styles.title}>Well come to my application!!!</Text>
         <PaperTextInput
           style={styles.input}
-          context={new SingleStateContext(this, 'username')}
+          context={new SingleStateContext(this, 'email')}
           label="Email"
         />
         <PaperTextInput
@@ -57,7 +70,7 @@ export default class MyLogin extends Component {
         <PaperButton
           style={(styles.input, styles.button)}
           mode="contained"
-          onPress={this.login}
+          onPress={this.register}
         >
           Register
         </PaperButton>

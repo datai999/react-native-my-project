@@ -4,6 +4,7 @@ https://www.facebook.com/datai99/
 Email:datai28599@gmail.com
 */
 import * as firebase from 'firebase/app'
+import 'firebase/auth'
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
