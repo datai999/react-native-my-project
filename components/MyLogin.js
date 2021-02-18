@@ -5,7 +5,12 @@ Email:datai28599@gmail.com
 */
 import React, { Component } from 'react'
 import { Text, View, StyleSheet } from 'react-native'
-import { TextInput, Button, Avatar } from 'react-native-paper'
+import {
+  Button as PaperButton,
+  Avatar as PaperAvatar,
+} from 'react-native-paper'
+import PaperTextInput from './PaperTextInput'
+import SingleStateContext from '../dto/SingleStateContext'
 
 export default class MyLogin extends Component {
   constructor(props) {
@@ -24,29 +29,29 @@ export default class MyLogin extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.logo}>
-          <Avatar.Icon icon="alpha-t-circle-outline" />
-          <Avatar.Icon icon="alpha-a-circle-outline" />
-          <Avatar.Icon icon="alpha-i-circle-outline" />
+          <PaperAvatar.Icon icon="alpha-t-circle-outline" />
+          <PaperAvatar.Icon icon="alpha-a-circle-outline" />
+          <PaperAvatar.Icon icon="alpha-i-circle-outline" />
         </View>
         <Text style={styles.title}>Well come to my application!!!</Text>
-        <TextInputComponent
+        <PaperTextInput
           style={styles.input}
           context={new SingleStateContext(this, 'username')}
           label="Email"
         />
-        <TextInputComponent
+        <PaperTextInput
           style={styles.input}
           secureTextEntry={true}
           context={new SingleStateContext(this, 'password')}
           label="Password"
         />
-        <Button
+        <PaperButton
           style={(styles.input, styles.button)}
           mode="contained"
           onPress={this.login}
         >
           Login
-        </Button>
+        </PaperButton>
       </View>
     )
   }
@@ -74,34 +79,3 @@ const styles = StyleSheet.create({
     width: '40%',
   },
 })
-
-class SingleStateContext {
-  constructor(context, stateName) {
-    this.context = context
-    this.stateName = stateName
-  }
-  getStateValue() {
-    return this.context.state[this.stateName]
-  }
-  setStateValue = (value) => {
-    this.context.setState({ [this.stateName]: value })
-  }
-}
-
-/**
- * @param {Context} context The context class
- */
-function TextInputComponent({ context, ...props }) {
-  const defaultProps = {
-    value: 'No context',
-  }
-
-  let contextProps
-  if (context != null && context instanceof SingleStateContext) {
-    contextProps = {
-      value: context.getStateValue(),
-      onChangeText: context.setStateValue,
-    }
-  }
-  return <TextInput {...defaultProps} {...contextProps} {...props} />
-}
