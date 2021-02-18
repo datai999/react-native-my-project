@@ -12,6 +12,7 @@ import {
 import PaperTextInput from '../../components/PaperTextInput'
 import SingleStateContext from '../../dto/SingleStateContext'
 import { FirebaseApp } from '../../server/FirebaseServer'
+import ScreenName from '../../constants/ScreenName'
 
 export default class LoginScreen extends Component {
   constructor(props) {
@@ -36,6 +37,10 @@ export default class LoginScreen extends Component {
         var errorMessage = error.message
         alert('Login failed:' + errorCode + errorMessage)
       })
+  }
+
+  dispatchRegisterScreen = () => {
+    this.props.navigation.navigate(ScreenName.register)
   }
 
   render() {
@@ -64,6 +69,13 @@ export default class LoginScreen extends Component {
           onPress={this.login}
         >
           Login
+        </PaperButton>
+        <PaperButton
+          style={(styles.input, styles.button)}
+          mode="contained"
+          onPress={this.dispatchRegisterScreen}
+        >
+          Register
         </PaperButton>
       </View>
     )

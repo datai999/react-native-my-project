@@ -33,13 +33,13 @@ function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name={ScreenName.Login}
+          name={ScreenName.login}
           component={LoginScreen}
           options={{
             headerShown: true,
           }}
         />
-        <Stack.Screen name={ScreenName.Register} component={RegisterScreen} />
+        <Stack.Screen name={ScreenName.register} component={RegisterScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   )
