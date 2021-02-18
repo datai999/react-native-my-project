@@ -5,7 +5,7 @@ Email:datai28599@gmail.com
 */
 import React, { Component } from 'react'
 import { Text, View, FlatList, RefreshControl } from 'react-native'
-import { getAllPoke } from '../networking/PokeServer'
+import { getAllPoke } from '../server/PokeServer'
 
 export default class MyPokeFlatList extends Component {
   constructor(props) {
