@@ -15,11 +15,14 @@ import MyTextInput from './components/MyTextInput'
 import MyScrollView from './components/MyScrollView'
 //lesson 17-25
 import MyFlatList from './components/MyFlatList'
-//lesson 26-29
+//lesson 26-28
 import MyPokeFlatList from './components/MyPokeFlatList'
-//lesson 30-40
+//lesson 29-30
 import MyLogin from './components/MyLogin'
 import MyRegister from './components/MyRegister'
+//lesson 31-34 login facebook, gg, realtime db
+//lesson 35-39 redux
+//lesson 40-45 redux saga
 //...
 
 // registerRootComponent calls AppRegistry.registerComponent('main', () => App);
