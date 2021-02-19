@@ -26,6 +26,7 @@ import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import ScreenName from './constants/ScreenName.js'
+//lesson 50-56 redux form and validate
 
 const Tab = createBottomTabNavigator()
 function App() {
