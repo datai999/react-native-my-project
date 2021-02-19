@@ -24,23 +24,17 @@ import RegisterScreen from './screen/register/RegisterScreen'
 //lesson 46-49 navigation
 import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
-import { createStackNavigator } from '@react-navigation/stack'
-import ScreenName from './constants/ScreenName'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import ScreenName from './constants/ScreenName.js'
 
-const Stack = createStackNavigator()
+const Tab = createBottomTabNavigator()
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name={ScreenName.login}
-          component={LoginScreen}
-          options={{
-            headerShown: true,
-          }}
-        />
-        <Stack.Screen name={ScreenName.register} component={RegisterScreen} />
-      </Stack.Navigator>
+      <Tab.Navigator>
+        <Tab.Screen name={ScreenName.Login} component={LoginScreen} />
+        <Tab.Screen name={ScreenName.Register} component={RegisterScreen} />
+      </Tab.Navigator>
     </NavigationContainer>
   )
 }
