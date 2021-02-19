@@ -40,7 +40,7 @@ export default class LoginScreen extends Component {
   }
 
   dispatchRegisterScreen = () => {
-    this.props.navigation.navigate(ScreenName.register)
+    this.props.navigation.navigate(ScreenName.Register)
   }
 
   render() {

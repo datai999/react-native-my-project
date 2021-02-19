@@ -4,7 +4,7 @@ https://www.facebook.com/datai99/
 Email:datai28599@gmail.com
 */
 const ScreenName = {
-  login: 'login',
-  register: 'register',
+  Login: 'Login',
+  Register: 'Register',
 }
 export default ScreenName
