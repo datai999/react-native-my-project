@@ -27,6 +27,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import ScreenName from './constants/ScreenName.js'
 //lesson 50-56 redux form and validate
+//lesson 57-61 Realm db (local db) => skip <= REALM DO NOT SUPPORT FOR EXPO
 
 const Tab = createBottomTabNavigator()
 function App() {
