@@ -29,6 +29,7 @@ import ScreenName from './constants/ScreenName.js'
 //lesson 50-56 redux form and validate
 //lesson 57-61 Realm db (local db) => skip <= REALM DO NOT SUPPORT FOR EXPO
 //lesson 62-65 tabNavigation and react-base
+//lesson 66-69 animation
 
 const Tab = createBottomTabNavigator()
 function App() {
