@@ -32,6 +32,7 @@ import ScreenName from './constants/ScreenName.js'
 //lesson 66-69 animation
 
 // Event app
+import HomeScreen from './screen/home/HomeScreen'
 
 const Tab = createBottomTabNavigator()
 function App() {
@@ -45,6 +46,7 @@ function App() {
           showLabel: true,
         }}
       >
+        <Tab.Screen name={ScreenName.Home} component={HomeScreen} />
         <Tab.Screen name={ScreenName.Login} component={LoginScreen} />
         <Tab.Screen name={ScreenName.Register} component={RegisterScreen} />
       </Tab.Navigator>

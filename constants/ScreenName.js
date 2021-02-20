@@ -6,5 +6,6 @@ Email:datai28599@gmail.com
 const ScreenName = {
   Login: 'Login',
   Register: 'Register',
+  Home: 'Home',
 }
 export default ScreenName
