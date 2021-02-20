@@ -3,74 +3,44 @@ Nguyen Duc Anh tai
 https://www.facebook.com/datai99/
 Email:datai28599@gmail.com
 */
-import React, { Component } from 'react'
-import { Text, View, FlatList, RefreshControl } from 'react-native'
+import React from 'react'
+import { StyleSheet, Text, FlatList, SafeAreaView } from 'react-native'
+import EventCard from './components/EvenCardComponents'
 import { getAllPoke } from '../../server/PokeServer'
 
-export default class HomeScreen extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      deletedRowKey: null,
-      refreshing: false,
-      pokeList: [],
-    }
-  }
-  componentDidMount() {
-    this.refreshDataFromServer()
-  }
-  refreshDataFromServer = () => {
-    this.setState({ refreshing: true })
+const HomeScreen = () => {
+  const [pokeList, setPokeList] = React.useState([])
+
+  React.useEffect(() => {
     getAllPoke()
       .then((pokes) => {
-        this.setState({ pokeList: pokes })
+        setPokeList(pokes)
       })
       .catch((err) => {
-        this.setState({ pokeList: [] })
+        alert(err)
       })
-    this.setState({ refreshing: false })
-  }
-  refreshFlatList = (deletedKey) => {
-    this.setState({ deletedRowKey: deletedKey })
-  }
-  render() {
-    return (
-      <View style={{ flex: 1, marginTop: 50 }}>
-        <Text>Welcome to my pokeList</Text>
-        <FlatList
-          data={this.state.pokeList}
-          keyExtractor={(item, index) => index.toString()}
-          renderItem={({ item, index }) => (
-            <FlatListItem
-              item={item}
-              index={index}
-              parentFlatList={this}
-            ></FlatListItem>
-          )}
-          refreshControl={
-            <RefreshControl
-              refreshing={this.state.refresh}
-              onRefresh={this.refreshDataFromServer}
-            />
-          }
-        ></FlatList>
-      </View>
-    )
-  }
-}
+  })
 
-class FlatListItem extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      activeRowKey: null,
-    }
-  }
-  render() {
-    return (
-      <View style={{ flex: 1 }}>
-        <Text>{this.props.index + '  ' + this.props.item.name}</Text>
-      </View>
-    )
-  }
+  return (
+    <SafeAreaView style={styles.container}>
+      <Text>Welcome to my pokeList</Text>
+      <FlatList
+        data={pokeList}
+        keyExtractor={(item, index) => index.toString()}
+        renderItem={({ item, index }) => (
+          <EventCard
+            item={item}
+            index={index}
+            parentFlatList={this}
+          ></EventCard>
+        )}
+      ></FlatList>
+    </SafeAreaView>
+  )
 }
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+})
+export default HomeScreen
