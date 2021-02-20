@@ -31,6 +31,8 @@ import ScreenName from './constants/ScreenName.js'
 //lesson 62-65 tabNavigation and react-base
 //lesson 66-69 animation
 
+// Event app
+
 const Tab = createBottomTabNavigator()
 function App() {
   return (
