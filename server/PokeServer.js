@@ -19,7 +19,7 @@ class Pokemon {
         element.type.name[0].toUpperCase() + element.type.name.slice(1),
     )
     // this.imageURL = json.sprites.front_default
-    this.imageURL = apiImagePoke + this.id + '.png'
+    this.imageURI = apiImagePoke + this.id + '.png'
   }
 }
 
