@@ -28,11 +28,7 @@ const HomeScreen = () => {
         data={pokeList}
         keyExtractor={(item, index) => index.toString()}
         renderItem={({ item, index }) => (
-          <PokeCard
-            pokemon={item}
-            index={index}
-            parentFlatList={this}
-          ></PokeCard>
+          <PokeCard poke={item} index={index}></PokeCard>
         )}
       ></FlatList>
     </SafeAreaView>
