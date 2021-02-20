@@ -28,12 +28,20 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import ScreenName from './constants/ScreenName.js'
 //lesson 50-56 redux form and validate
 //lesson 57-61 Realm db (local db) => skip <= REALM DO NOT SUPPORT FOR EXPO
+//lesson 62-65 tabNavigation and react-base
 
 const Tab = createBottomTabNavigator()
 function App() {
   return (
     <NavigationContainer>
-      <Tab.Navigator>
+      <Tab.Navigator
+        swipeEnabled={true}
+        tabBarOptions={{
+          activeTintColor: 'tomato',
+          inactiveTintColor: 'gray',
+          showLabel: true,
+        }}
+      >
         <Tab.Screen name={ScreenName.Login} component={LoginScreen} />
         <Tab.Screen name={ScreenName.Register} component={RegisterScreen} />
       </Tab.Navigator>
