@@ -6,13 +6,12 @@ Email:datai28599@gmail.com
 import React, { useState } from 'react'
 import { Text, View } from 'react-native'
 
-const EventCard = ({ index, item }) => {
-  const [text, setText] = useState('')
+const PokeCard = ({ index, pokemon }) => {
   return (
     <View style={{ padding: 10 }}>
-      <Text>{item.name}</Text>
+      <Text>{pokemon.name + pokemon.weight + pokemon.types}</Text>
     </View>
   )
 }
 
-export default EventCard
+export default PokeCard

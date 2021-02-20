@@ -5,34 +5,34 @@ Email:datai28599@gmail.com
 */
 import React from 'react'
 import { StyleSheet, Text, FlatList, SafeAreaView } from 'react-native'
-import EventCard from './components/EvenCardComponents'
-import { getAllPoke } from '../../server/PokeServer'
+import PokeCard from './components/PokeCardComponents'
+import { getDetailPokes } from '../../server/PokeServer'
 
 const HomeScreen = () => {
   const [pokeList, setPokeList] = React.useState([])
 
   React.useEffect(() => {
-    getAllPoke()
-      .then((pokes) => {
-        setPokeList(pokes)
+    getDetailPokes()
+      .then((pokemon) => {
+        setPokeList(pokemon)
       })
       .catch((err) => {
         alert(err)
       })
-  })
+  }, [])
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text>Welcome to my pokeList</Text>
+      <Text>Welcome to my PokeDex</Text>
       <FlatList
         data={pokeList}
         keyExtractor={(item, index) => index.toString()}
         renderItem={({ item, index }) => (
-          <EventCard
-            item={item}
+          <PokeCard
+            pokemon={item}
             index={index}
             parentFlatList={this}
-          ></EventCard>
+          ></PokeCard>
         )}
       ></FlatList>
     </SafeAreaView>

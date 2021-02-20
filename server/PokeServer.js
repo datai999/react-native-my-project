@@ -6,7 +6,22 @@ Email:datai28599@gmail.com
 import React, { Component } from 'react'
 import { Text, View, Alert } from 'react-native'
 
-const apiPoke = 'https://pokeapi.co/api/v2/pokemon?limit=100'
+const apiPoke = 'https://pokeapi.co/api/v2/pokemon'
+const apiImagePoke = 'https://pokeres.bastionbot.org/images/pokemon/'
+
+class Pokemon {
+  constructor(json) {
+    this.id = json.id
+    this.name = json.name[0].toUpperCase() + json.name.slice(1)
+    this.weight = json.weight
+    this.types = json.types.map(
+      (element) =>
+        element.type.name[0].toUpperCase() + element.type.name.slice(1),
+    )
+    // this.imageURL = json.sprites.front_default
+    this.imageURL = apiImagePoke + this.id + '.png'
+  }
+}
 
 async function getAllPoke() {
   try {
@@ -14,7 +29,23 @@ async function getAllPoke() {
     let responseJson = await response.json()
     return responseJson.results
   } catch (error) {
-    console.log('Error: ${error}')
+    console.log('Error:' + error)
+  }
+}
+
+async function getDetailPokes(start, end) {
+  if (start === undefined) start = 1
+  if (end === undefined) end = 20
+  try {
+    let result = []
+    for (let i = start; i <= end; i++) {
+      let response = await fetch(apiPoke + '/' + i)
+      let responseJson = await response.json()
+      result.push(new Pokemon(responseJson))
+    }
+    return result
+  } catch (error) {
+    console.log('Error:' + error)
   }
 }
 
@@ -34,5 +65,5 @@ async function postTemplates(params) {
     console.log('Error: ${error} ')
   }
 }
-export { getAllPoke }
+export { Pokemon, getAllPoke, getDetailPokes }
 export { postTemplates }
