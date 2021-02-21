@@ -4,14 +4,7 @@ https://www.facebook.com/datai99/
 Email:datai28599@gmail.com
 */
 import React, { useState } from 'react'
-import {
-  StyleSheet,
-  View,
-  Text,
-  Image,
-  ImageBackground,
-  FlatList,
-} from 'react-native'
+import { StyleSheet, View, Text, Image, ImageBackground } from 'react-native'
 
 const PokeCard = ({ index, poke }) => {
   return (
@@ -21,14 +14,13 @@ const PokeCard = ({ index, poke }) => {
       </ImageBackground>
       <Text style={styles.id}>#{poke.id.toString().padStart(3, '0')}</Text>
       <Text style={styles.name}>{poke.name}</Text>
-      <FlatList
-        style={styles.types}
-        data={poke.types}
-        keyExtractor={(item, index) => index.toString()}
-        renderItem={({ item, index }) => (
-          <Text style={getTypePokeColor(item)}>{item}</Text>
-        )}
-      />
+      <View style={styles.types}>
+        {poke.types.map((item) => (
+          <Text style={getTypePokeColor(item)} key={item}>
+            {item}
+          </Text>
+        ))}
+      </View>
     </View>
   )
 }
