@@ -36,17 +36,17 @@ async function getAllPoke() {
 async function getDetailPokes(start, end) {
   if (start === undefined) start = 1
   if (end === undefined) end = 20
-  try {
-    let result = []
-    for (let i = start; i <= end; i++) {
+  let result = []
+  for (let i = start; i <= end; i++) {
+    try {
       let response = await fetch(apiPoke + '/' + i)
       let responseJson = await response.json()
       result.push(new Pokemon(responseJson))
+    } catch (error) {
+      console.log('Error:' + error)
     }
-    return result
-  } catch (error) {
-    console.log('Error:' + error)
   }
+  return result
 }
 
 async function postTemplates(params) {

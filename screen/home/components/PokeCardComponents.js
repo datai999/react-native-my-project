@@ -19,6 +19,7 @@ const PokeCard = ({ index, poke }) => {
       <ImageBackground style={styles.imageBackground}>
         <Image style={styles.image} source={{ uri: poke.imageURI }} />
       </ImageBackground>
+      <Text style={styles.id}>#{poke.id.toString().padStart(3, '0')}</Text>
       <Text style={styles.name}>{poke.name}</Text>
       <FlatList
         style={styles.types}
@@ -54,9 +55,20 @@ const styles = StyleSheet.create({
     width: 80,
     height: 80,
   },
+  id: {
+    width: 40,
+    height: 20,
+    borderRadius: 10,
+    backgroundColor: 'aliceblue',
+    margin: 10,
+    padding: 1,
+    marginLeft: 30,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
   name: {
-    flex: 3,
-    paddingLeft: 30,
+    flex: 2,
+    paddingLeft: 10,
     fontWeight: 'bold',
     fontSize: 18,
   },
