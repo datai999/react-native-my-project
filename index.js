@@ -24,7 +24,6 @@ import RegisterScreen from './screen/register/RegisterScreen'
 //lesson 46-49 navigation
 import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import ScreenName from './constants/ScreenName.js'
 //lesson 50-56 redux form and validate
 //lesson 57-61 Realm db (local db) => skip <= REALM DO NOT SUPPORT FOR EXPO
@@ -33,7 +32,11 @@ import ScreenName from './constants/ScreenName.js'
 //lesson 70-77 native module -> skip
 //end
 
-const Tab = createBottomTabNavigator()
+// Event app
+import HomeScreen from './screen/home/HomeScreen'
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
+
+const Tab = createMaterialTopTabNavigator()
 function App() {
   return (
     <NavigationContainer>
@@ -45,6 +48,7 @@ function App() {
           showLabel: true,
         }}
       >
+        <Tab.Screen name={ScreenName.Home} component={HomeScreen} />
         <Tab.Screen name={ScreenName.Login} component={LoginScreen} />
         <Tab.Screen name={ScreenName.Register} component={RegisterScreen} />
       </Tab.Navigator>
