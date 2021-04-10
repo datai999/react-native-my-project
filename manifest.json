@@ -1,0 +1,7 @@
+{
+  "display": "standalone",
+  "lang": "en",
+  "name": "taiProject",
+  "short_name": "taiProject",
+  "start_url": "/?utm_source=web_app_manifest"
+}
